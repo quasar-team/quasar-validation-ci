@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<d:design projectShortName="" xmlns:d="http://cern.ch/quasar/Design" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://cern.ch/quasar/Design Design.xsd ">
+	<d:class name="RedLED"><d:devicelogic/>    
+		<d:cachevariable initializeWith="valueAndStatus" dataType="OpcUa_UInt32" name="on" nullPolicy="nullForbidden" addressSpaceWrite="delegated" initialStatus="OpcUa_Good" initialValue="0"/>
+	</d:class>
+	<d:class name="YellowLED"><d:devicelogic/>    
+		<d:cachevariable initializeWith="valueAndStatus" dataType="OpcUa_UInt32" name="on" nullPolicy="nullForbidden" addressSpaceWrite="delegated" initialStatus="OpcUa_Good" initialValue="0"/>
+	</d:class>
+	<d:class name="GreenLED"><d:devicelogic/>    
+		<d:cachevariable initializeWith="valueAndStatus" dataType="OpcUa_UInt32" name="on" nullPolicy="nullForbidden" addressSpaceWrite="delegated" initialStatus="OpcUa_Good" initialValue="0"/>
+	</d:class>
+  <d:root>
+  	<d:hasobjects instantiateUsing="configuration" class="RedLED"></d:hasobjects>
+	<d:hasobjects instantiateUsing="configuration" class="YellowLED"></d:hasobjects>
+	<d:hasobjects instantiateUsing="configuration" class="GreenLED"></d:hasobjects></d:root>
+</d:design>

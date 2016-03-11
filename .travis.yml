@@ -24,3 +24,4 @@ script:
  #- python quasar.py generate device YellowLED
  #- python quasar.py generate device RedLED
  #- python quasar.py build Release ubuntu_evaluationToolkit.cmake
+ #

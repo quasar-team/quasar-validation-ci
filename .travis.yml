@@ -15,12 +15,12 @@ before_install:
  - tar -xzvf download
  - sudo cp -R sdk/ /opt/OpcUaToolkit-1.3.3-evaluation/
 script:
- - git clone https://github.com/quasar-team/quasar.git
+ #- git clone https://github.com/quasar-team/quasar.git
  - cd quasar
- - mv ../CI/Design.xml Design/
- - mv ../CI/config.xml bin/
- - mv ../CI/ubuntu_evaluationToolkit.cmake .
- - python quasar.py generate device GreenLED
- - python quasar.py generate device YellowLED
- - python quasar.py generate device RedLED
- - python quasar.py build Release ubuntu_evaluationToolkit.cmake
+ #- mv ../CI/Design.xml Design/
+ #- mv ../CI/config.xml bin/
+ #- mv ../CI/ubuntu_evaluationToolkit.cmake .
+ #- python quasar.py generate device GreenLED
+ #- python quasar.py generate device YellowLED
+ #- python quasar.py generate device RedLED
+ #- python quasar.py build Release ubuntu_evaluationToolkit.cmake

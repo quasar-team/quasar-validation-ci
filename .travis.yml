@@ -27,8 +27,8 @@ script:
  - wget -O quasar/open62541/src/open62541.c --no-check-certificat https://cernbox.cern.ch/index.php/s/RbxN9UP2iWz04ra/download
  - wget -O quasar/open62541/include/open62541.h --no-check-certificat https://cernbox.cern.ch/index.php/s/l9jPKvmI4l2CogC/download
  - cd quasar
- - sudo chmod 777 -R *
  - python quasar.py generate device GreenLED
  - python quasar.py generate device YellowLED
  - python quasar.py generate device RedLED
+ - sudo chmod 777 -R *
  - python quasar.py build Release open62541_config.cmake

@@ -1,0 +1,4 @@
+add_definitions(-std=gnu99)
+add_library(open62541 OBJECT
+		    src/open62541.c
+)

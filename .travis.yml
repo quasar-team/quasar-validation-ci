@@ -25,4 +25,4 @@ script:
  - python quasar.py generate device YellowLED
  - python quasar.py generate device RedLED
  - sudo chmod 777 -R *
- - python quasar.py build Release open62541_config.cmake
+ - python quasar.py build Release ubuntu_evaluationToolkit.cmake

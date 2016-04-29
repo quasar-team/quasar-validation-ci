@@ -18,6 +18,7 @@ script:
  - mv quasar-validation-ci/CI/Design.xml quasar/Design/
  - mv quasar-validation-ci/CI/config.xml quasar/bin/
  - mv quasar-validation-ci/CI/ServerConfig.xml quasar/bin/
+ - mv quasar-validation-ci/CI/ubuntu_evaluationToolkit.cmake quasar/
 #links from cernbox are not permanent, be carefull
  - wget -O quasar/Design/saxon9he.jar --no-check-certificat https://cernbox.cern.ch/index.php/s/FIZm1Ew5CyxLDUd/download
  - cd quasar

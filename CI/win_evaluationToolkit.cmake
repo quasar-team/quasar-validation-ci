@@ -64,7 +64,7 @@ set( BOOST_LIBS  libboostlogsetup libboostlog libboostsystem libboostfilesystem 
 #------
 #OPCUA
 #------
-SET( OPCUA_TOOLKIT_PATH "C:\Program Files (x86)\UnifiedAutomation\UaSdkCppBundleEval" )
+SET( OPCUA_TOOLKIT_PATH "C:/Program Files (x86)/UnifiedAutomation/UaSdkCppBundleEval" )
 
 message(STATUS "UA TOOLKIT - OPC-UA toolkit path [${OPCUA_TOOLKIT_PATH}]" )
 

@@ -37,7 +37,7 @@ def generateCmake(BUILD_TYPE="Release", CMAKE_TOOLCHAIN_FILE="default_configurat
 
 	print("Calling CMake")
 	if platform.system() == "Windows":
-		returnCode = subprocess.call("cmake -DCMAKE_BUILD_TYPE=" + BUILD_TYPE + " -DCMAKE_TOOLCHAIN_FILE=" + CMAKE_TOOLCHAIN_FILE + " -G \"Visual Studio 12 Win32\" .", shell=True)
+		returnCode = subprocess.call("cmake -DCMAKE_BUILD_TYPE=" + BUILD_TYPE + " -DCMAKE_TOOLCHAIN_FILE=" + CMAKE_TOOLCHAIN_FILE + " -G \"Visual Studio 12 ARM\" .", shell=True)
 	elif platform.system() == "Linux":
 		returnCode = subprocess.call("cmake -DCMAKE_BUILD_TYPE=" + BUILD_TYPE + " -DCMAKE_TOOLCHAIN_FILE=" + CMAKE_TOOLCHAIN_FILE + " .", shell=True)
 	if returnCode != 0:

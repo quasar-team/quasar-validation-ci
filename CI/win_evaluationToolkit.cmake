@@ -150,7 +150,7 @@ message(STATUS "Open SSL path [${OPENSSL_PATH}]" )
 #----
 #XERCESC
 #----
-SET(XERCESC_PATH "C:/Program Files (x86)/CodeSynthesis XSD 4.0/xerces-c-3.1.1")
+SET(XERCESC_PATH "C:/Program Files (x86)/CodeSynthesis XSD 4.0/lib/vc-12.0")
 
 message(STATUS "Xerces-c lib path [${XERCESC_PATH}]" )
 

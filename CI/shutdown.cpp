@@ -1,3 +1,4 @@
+//#ifndef BACKEND_OPEN62541
 /******************************************************************************
 ** Copyright (C) 2006-2011 Unified Automation GmbH. All Rights Reserved.
 ** Web: http://www.unifiedautomation.com
@@ -12,7 +13,10 @@
           the "CTRL-C" exception in the "Win32 Exceptions" category.
 ******************************************************************************/
 #include "shutdown.h"
+
+#ifndef BACKEND_OPEN62541
 #include "uaplatformlayer.h"
+#endif
 
 #include <stdio.h>
 #include <string.h>
@@ -20,14 +24,19 @@
 # ifndef WIN32
 #  include <unistd.h>
 #  include <limits.h> 
+#  include <windows.h>
 # endif
 
-/* shutdown flag */
-static volatile unsigned int g_ShutDown = 0;
+volatile unsigned int  g_ShutDown = 0;
+
+#ifdef BACKEND_OPEN62541
+UA_Boolean g_RunningFlag = 1;
+#endif
+
+
 #ifdef _WIN32_WCE
-	# include <windows.h>	 
+	
 #elif defined(_WIN32) && !defined(USE_CTRLC_ON_WINDOWS)
-#  include <windows.h>
 #  include <conio.h> /* DOS header for _kbhit() and _getch() */
 #endif
 
@@ -58,6 +67,9 @@ void sig_int(int signo)
 {
     SHUTDOWN_TRACE("Received SIG_INT(%i) signal.\n", signo);
     g_ShutDown = 1;
+    #ifdef BACKEND_OPEN62541
+    g_RunningFlag = 0;
+    #endif
 }
 
 void RegisterSignalHandler()
@@ -99,7 +111,6 @@ void RegisterSignalHandler()
  * Windows CTRL-C Handler implementation. *
  ******************************************/
 # ifdef USE_CTRLC_ON_WINDOWS
-#  include <windows.h>
 #  include <conio.h>
 BOOL CtrlHandler(DWORD fdwCtrlType) 
 {
@@ -170,3 +181,4 @@ char* getAppPath()
 
     return pszAppPath;
 }
+// #endif // BACKEND_OPEN62541

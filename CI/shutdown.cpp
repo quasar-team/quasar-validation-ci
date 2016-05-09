@@ -24,9 +24,9 @@
 # ifndef WIN32
 #  include <unistd.h>
 #  include <limits.h> 
+# else
 #  include <windows.h>
 # endif
-
 volatile unsigned int  g_ShutDown = 0;
 
 #ifdef BACKEND_OPEN62541

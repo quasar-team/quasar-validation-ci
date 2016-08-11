@@ -106,13 +106,6 @@ endif()
 
 SET( XML_LIBS Rpcrt4 crypt32 ws2_32 custeay32 libxercesc custlibxml)
 
-#-----
-#GoogleTest
-#-----
-include_directories(
-	${PROJECT_SOURCE_DIR}/GoogleTest/gtest/src/gtest/include
-)
-
 add_definitions( -DBACKEND_OPEN62541 )
 
 add_definitions(-DSUPPORT_XML_CONFIG -Wall -DWIN32_LEAN_AND_MEAN)
@@ -123,4 +116,4 @@ set(CMAKE_CXX_FLAGS_DEBUG "/MDd /Zi")
 SET( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG bin/)
 SET( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE bin/)
 
-set(BACKEND_SERVER_MODULES open62541 open62541-compat)
+set(BACKEND_SERVER_MODULES open62541-compat)

@@ -18,4 +18,4 @@ add_definitions(-DSUPPORT_XML_CONFIG -Wall -DWIN32_LEAN_AND_MEAN -Wno-literal-su
 set(CMAKE_CXX_FLAGS_RELEASE "-m64 -static-libstdc++ -std=gnu++0x")
 set(CMAKE_CXX_FLAGS_DEBUG "-m64 -static-libstdc++ -std=gnu++0x")
 
- 
+add_definitions( -DBACKEND_UATOOLKIT ) 

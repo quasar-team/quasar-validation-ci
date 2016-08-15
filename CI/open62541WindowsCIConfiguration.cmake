@@ -10,8 +10,8 @@ message("using build configuration from open62541WindowsCIConfiguration.cmake")
 #-------
 #Boost
 #-------
-SET( BOOST_PATH_HEADERS "C:/Libraries/boost_1_58_0" )
-SET( BOOST_PATH_LIBS "C:/Libraries/boost_1_58_0/lib64-msvc-12.0"	 )
+SET( BOOST_PATH_HEADERS "C:\Workspace\boost_mapped_namespace_builder\1_59_0_VS2013\MAPPED_NAMESPACE_INSTALL\64bit\include" )
+SET( BOOST_PATH_LIBS "C:\Workspace\boost_mapped_namespace_builder\1_59_0_VS2013\MAPPED_NAMESPACE_INSTALL\64bit\libs"	 )
 message(STATUS "BOOST - include [${BOOST_PATH_HEADERS}] libs [${BOOST_PATH_LIBS}]")
 
 if(NOT TARGET libboostprogramoptions)
@@ -116,4 +116,4 @@ set(CMAKE_CXX_FLAGS_DEBUG "/MDd /Zi")
 SET( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG bin/)
 SET( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE bin/)
 
-set(BACKEND_SERVER_MODULES open62541-compat)
+set(CUSTOM_SERVER_MODULES open62541-compat)

@@ -32,7 +32,7 @@ downloaded_files = {
 windows_tools = {
 'UNZIP':'"C:/Program Files/7-Zip/7z.exe"', 'UNZIP_ARGS': 'x {0} -o{1}' , 
 'MSI': 'msiexec' , 'MSI_ARGS': '/i {0} /quiet /qn /norestart /log install.log' ,
-'EXE_INSTALLER': '{0}', 'EXE_INSTALLER_ARGS': '/install=agent /silent'
+'EXE_INSTALLER': '{0}', 'EXE_INSTALLER_ARGS': '/install=agent /SP- /SILENT /VERYSILENT /SUPPRESSMSGBOXES /NORESTART /NOCLOSEAPPLICATIONS /NOCANCEL'
 }
 
 

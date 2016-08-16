@@ -10,7 +10,8 @@ import sys
 #
 downloadsDir = os.path.join(os.getcwd(), 'downloads')
 oldDownloadsDir = os.path.join(os.getcwd(), 'downloads.OLD')
-xsdInstalledDir = 'C:\\Program Files (x86)\\CodeSynthesis XSD 3.3\\bin\\'
+xsdInstallDir = os.path.abspath(os.path.join(os.sep, 'Program Files (x86)', 'CodeSynthesis XSD 3.3'))
+xsdInstallBinaryDir = os.path.join(xsdInstallDir, 'bin')
 
 downloaded_files = {
 'LXML': os.path.join(downloadsDir, 'lxml-3.4.4-cp27-none-win32.whl'),
@@ -80,10 +81,12 @@ def write_file(filename, content):
 		f.write(content)
 
 def rename_codesynthesys_exe(xsdFrom, xsdTo):
-	if( os.path.exists(xsdFrom) ):
-		if not (os.path.exists(xsdTo) ):
-			print("Changing xsdcxx binary name from ["+xsdFrom+"] to ["+xsdTo+"]")
-			shutil.move(xsdFrom, xsdTo)
+	xsdFromFile = os.path.join(xsdInstallBinaryDir, xsdFrom)
+	xsdToFile = os.path.join(xsdInstallBinaryDir, xsdTo)
+	if( os.path.exists(xsdFromFile) ):
+		if not (os.path.exists(xsdToFile) ):
+			print("Changing xsdcxx binary name from ["+xsdFromFile+"] to ["+xsdToFile+"]")
+			shutil.move(xsdFromFile, xsdToFile)
 
 
 
@@ -114,7 +117,7 @@ run_command('unzip astyle', windows_tools['UNZIP'], windows_tools['UNZIP_ARGS'].
 run_command('unzip libxml2', windows_tools['UNZIP'], windows_tools['UNZIP_ARGS'].format(downloaded_files['LIBXML2'], downloadsDir))
 
 run_command('install codesynthesis xsd', windows_tools['MSI'], windows_tools['MSI_ARGS'].format(downloaded_files['XSD']) )
-rename_codesynthesys_exe(os.path.join(xsdInstalledDir, 'xsd.exe'), os.path.join(xsdInstalledDir, 'xsdcxx.exe'))
+rename_codesynthesys_exe('xsd.exe', 'xsdcxx.exe')
 
 run_command('unzip xerces', windows_tools['UNZIP'], windows_tools['UNZIP_ARGS'].format(downloaded_files['XERCES'], downloadsDir))
 run_command('install openssl', windows_tools['EXE_INSTALLER'].format(downloaded_files['OPENSSL']), windows_tools['EXE_INSTALLER_ARGS'])
@@ -124,5 +127,8 @@ print('==GREAT! all windows dependencies setup and installed on this machine. BU
 print('==Generating file \'setLocalPath.bat\' - run this in the local CMD window to set PATH accordingly)                             ')
 libxml2Bin=os.path.join(downloadsDir, 'libxml2-2.7.8.win32', 'bin')
 astyleBin=os.path.join(downloadsDir, 'AStyle', 'bin')
-write_file('setLocalPath.bat', 'SET PATH=%PATH%;{0};{1};{2}'.format(xsdInstalledDir, libxml2Bin, astyleBin))
+setPATH = 'SET PATH=%PATH%;{0};{1};{2}'.format(xsdInstallBinaryDir, libxml2Bin, astyleBin)
+setLIBXML2 = 'SET LIBXML2={0}'.format(os.path.join(downloadsDir, 'libxml2-2.7.8.win32'))
+setCODE_SYNTHESYS_XSD = 'SET CODE_SYNTHESYS_XSD={0}'.format(xsdInstallDir)
+write_file('setLocalPath.bat', '{0}\n{1}\n{2}'.format(setPATH, setLIBXML2, setCODE_SYNTHESYS_XSD))
 print('===============================================================================================================================')

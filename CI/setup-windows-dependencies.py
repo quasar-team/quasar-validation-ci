@@ -57,14 +57,12 @@ def setup_downloads_directories():
 	except Exception as e:
 		sys.exit('unexpected error whilst dealing with downloads directories [{0}] and  [${1}], error msg: {2}'.format(downloadsDir, oldDownloadsDir, e.message))
 
-
 def download_file(filenameOnDisk, remoteURL):
 	print 'downloading file [{0}] from [{1}]'.format(filenameOnDisk, remoteURL)
 	try:
 		urllib.urlretrieve (remoteURL, filenameOnDisk)
 	except Exception as e:
 		sys.exit('unexpected downloading file [{0}] from [${1}], error msg: {2}'.format(filenameOnDisk, remoteURL, e.message))
-
 
 def run_command(cmd_purpose_string, cmd, args):
 	print 'executing cmd for purpose [{0}], cmd [{1}], args [{2}]'.format(cmd_purpose_string, cmd, args)
@@ -76,11 +74,16 @@ def run_command(cmd_purpose_string, cmd, args):
 	except Exception as e:
 		sys.exit('cmd exec for [{1}] failed, unknown error. Exception message: {2}'.format(cmd_purpose_string, e.message) )
 
-
 def write_file(filename, content):
 	with open('setLocalPath.bat', 'w') as f:
 		f.truncate()
 		f.write(content)
+
+def rename_codesynthesys_exe(xsdFrom, xsdTo):
+	if( os.path.exists(xsdFrom) ):
+		if not (os.path.exists(xsdTo) ):
+			print("Changing xsdcxx binary name from ["+xsdFrom+"] to ["+xsdTo+"]")
+			shutil.move(xsdFrom, xsdTo)
 
 
 
@@ -111,12 +114,7 @@ run_command('unzip astyle', windows_tools['UNZIP'], windows_tools['UNZIP_ARGS'].
 run_command('unzip libxml2', windows_tools['UNZIP'], windows_tools['UNZIP_ARGS'].format(downloaded_files['LIBXML2'], downloadsDir))
 
 run_command('install codesynthesis xsd', windows_tools['MSI'], windows_tools['MSI_ARGS'].format(downloaded_files['XSD']) )
-xsdFrom = os.path.join(xsdInstalledDir, 'xsd.exe')
-if( os.path.exists(xsdFrom) ):
-	xsdTo = os.path.join(xsdInstalledDir, 'xsdcxx.exe')
-	if not (os.path.exists(xsdTo) ):
-		print("Changing xsdcxx binary name from ["+xsdFrom+"] to ["+xsdTo+"]")
-		shutil.move(xsdFrom, xsdTo)
+rename_codesynthesys_exe(os.path.join(xsdInstalledDir, 'xsd.exe'), os.path.join(xsdInstalledDir, 'xsdcxx.exe'))
 
 run_command('unzip xerces', windows_tools['UNZIP'], windows_tools['UNZIP_ARGS'].format(downloaded_files['XERCES'], downloadsDir))
 run_command('install openssl', windows_tools['EXE_INSTALLER'].format(downloaded_files['OPENSSL']), windows_tools['EXE_INSTALLER_ARGS'])

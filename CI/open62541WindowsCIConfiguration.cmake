@@ -60,15 +60,27 @@ MESSAGE( STATUS "LogIt build options: stdout [${LOGIT_HAS_STDOUTLOG}] boost [${L
 #-----
 #CodeSynthesys XSD
 #-----
-include_directories(
-"C:/Program Files (x86)/CodeSynthesis XSD 3.3/include"
-)
+if( NOT DEFINED ENV{CODE_SYNTHESYS_XSD} )
+	message(WARNING "environment variable CODE_SYNTHESYS_XSD not defined - using default location [C:/Program Files (x86)/CodeSynthesis XSD 4.0]")
+	include_directories(
+	"C:/Program Files (x86)/CodeSynthesis XSD 4.0/include"
+	)
+else()
+	message(STATUS "Using environment variable for CODE_SYNTHESYS_XSD adding include [$ENV{CODE_SYNTHESYS_XSD}/include]")
+	include_directories(
+	$ENV{CODE_SYNTHESYS_XSD}/include
+	)
+endif()
 		
-
 #----
 #OPENSSL
 #----
-SET(OPENSSL_PATH "C:/OpenSSL-Win32")
+if( NOT DEFINED ENV{OPENSSL} )
+	message(WARNING "environment variable OPENSSL not defined - using default location [C:/OpenSSL-Win64]")
+	SET(OPENSSL_PATH "C:/OpenSSL-Win64")
+else()
+	SET(OPENSSL_PATH $ENV{OPENSSL})
+endif()
 
 include_directories(
 	${OPENSSL_PATH}/include
@@ -78,14 +90,23 @@ message(STATUS "Open SSL path [${OPENSSL_PATH}]" )
 #----
 #XERCESC
 #----
-SET(XERCESC_PATH "C:/projects/xerces-c-3.1.2/Build/Win64/VC10/Debug")
-
-message(STATUS "Xerces-c lib path [${XERCESC_PATH}]" )
+if( NOT DEFINED ENV{XERCESC} )
+	message(WARNING "environment variable XERCESC not defined - using default location [C:/3rdPartySoftware/xerces-c-3.1.2/Build/Win64]")
+	SET(XERCESC_PATH "C:/3rdPartySoftware/xerces-c-3.1.2/Build/Win64/VC10/Release")
+else()
+	SET(XERCESC_PATH $ENV{XERCESC}/Build/Win64/VC10/Release)
+endif()
+message(STATUS "Xerces-c path [${XERCESC_PATH}]" )
 
 #----
 #LIBXML2
 #----
-SET(LIBXML2_PATH "C:/projects/libxml2-2.7.8.win32")
+if( NOT DEFINED ENV{LIBXML2} )
+	message(WARNING "environment variable LIBXML2 not defined - using default location [C:/3rdPartySoftware/libxml2/v2.7.8_64BIT/BUILD]")
+	SET(LIBXML2_PATH "C:/3rdPartySoftware/libxml2/v2.7.8_64BIT/BUILD/VS2013")
+else()
+	SET(LIBXML2_PATH $ENV{LIBXML2})
+endif()
 message(STATUS "Lib XML 2 path [${LIBXML2_PATH}]" )
 
 #-----
@@ -93,7 +114,7 @@ message(STATUS "Lib XML 2 path [${LIBXML2_PATH}]" )
 #-----
 if(NOT TARGET libxercesc) 
 	add_library(libxercesc STATIC IMPORTED)
-	set_property(TARGET libxercesc PROPERTY IMPORTED_LOCATION ${XERCESC_PATH}/xerces-c_3D.lib)		
+	set_property(TARGET libxercesc PROPERTY IMPORTED_LOCATION ${XERCESC_PATH}/xerces-c_3.lib)		
 endif()
 if(NOT TARGET custlibxml) 
 	add_library(custlibxml STATIC IMPORTED)

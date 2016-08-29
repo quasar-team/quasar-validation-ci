@@ -20,6 +20,8 @@ downloaded_files = {
 'PYSVN_URL': 'https://cernbox.cern.ch/index.php/s/CFxkAy38E8C8ipA/download',
 'ASTYLE': os.path.join(downloadsDir, 'astyle.zip'),
 'ASTYLE_URL': 'https://cernbox.cern.ch/index.php/s/MwzEg2vSDNATgTI/download',
+'BOOST': os.path.join(downloadsDir, 'boost_1_59_0_VS2013.zip'),
+'BOOST_URL': 'https://cernbox.cern.ch/index.php/s/n6XWtzH8mwH2jhq/download',
 'LIBXML2': os.path.join(downloadsDir, 'libxml2-2.7.8.win32.zip'),
 'LIBXML2_URL': 'https://cernbox.cern.ch/index.php/s/0mHSe6TqM6OBBWA/download',
 'XSD': os.path.join(downloadsDir,'xsd-3.3.msi'),
@@ -106,6 +108,7 @@ setup_downloads_directories()
 download_file(downloaded_files['LXML'], downloaded_files['LXML_URL'])
 download_file(downloaded_files['PYSVN'], downloaded_files['PYSVN_URL'])
 download_file(downloaded_files['ASTYLE'], downloaded_files['ASTYLE_URL'])
+download_file(downloaded_files['BOOST'], downloaded_files['BOOST_URL'])
 download_file(downloaded_files['LIBXML2'], downloaded_files['LIBXML2_URL'])
 download_file(downloaded_files['XSD'], downloaded_files['XSD_URL'])
 download_file(downloaded_files['XERCES'], downloaded_files['XERCES_URL'])
@@ -114,6 +117,7 @@ download_file(downloaded_files['OPENSSL'], downloaded_files['OPENSSL_URL'])
 run_command('upgrade pip', 'C:\Python27\Scripts\pip', 'install --disable-pip-version-check --user --upgrade pip')
 run_command('install python lxml', 'C:\Python27\Scripts\pip', 'install {0}'.format(downloaded_files['LXML']))
 run_command('unzip astyle', windows_tools['UNZIP'], windows_tools['UNZIP_ARGS'].format(downloaded_files['ASTYLE'], downloadsDir))
+run_command('unzip boost', windows_tools['UNZIP'], windows_tools['UNZIP_ARGS'].format(downloaded_files['BOOST'], downloadsDir))
 run_command('unzip libxml2', windows_tools['UNZIP'], windows_tools['UNZIP_ARGS'].format(downloaded_files['LIBXML2'], downloadsDir))
 
 run_command('install codesynthesis xsd', windows_tools['MSI'], windows_tools['MSI_ARGS'].format(downloaded_files['XSD']) )
@@ -128,8 +132,9 @@ print('==Generating file \'setLocalPath.bat\' - run this in the local CMD window
 libxml2Bin=os.path.join(downloadsDir, 'libxml2-2.7.8.win32', 'bin')
 astyleBin=os.path.join(downloadsDir, 'AStyle', 'bin')
 setPATH = 'SET PATH=%PATH%;{0};{1};{2}'.format(xsdInstallBinaryDir, libxml2Bin, astyleBin)
+setBOOST = 'SET BOOST_HOME={0}'.format(os.path.join(downloadsDir, 'boost_1_59_0_VS2013'))
 setLIBXML2 = 'SET LIBXML2={0}'.format(os.path.join(downloadsDir, 'libxml2-2.7.8.win32'))
 setCODE_SYNTHESYS_XSD = 'SET CODE_SYNTHESYS_XSD={0}'.format(xsdInstallDir)
 setXERCES = 'SET XERCESC={0}'.format(os.path.join(downloadsDir, 'xerces-c-3.1.2', 'Build', 'Win64'))
-write_file('setLocalPath.bat', '{0}\n{1}\n{2}\n{3}'.format(setPATH, setLIBXML2, setCODE_SYNTHESYS_XSD, setXERCES))
+write_file('setLocalPath.bat', '{0}\n{1}\n{2}\n{3}'.format(setPATH, setBOOST, setLIBXML2, setCODE_SYNTHESYS_XSD, setXERCES))
 print('===============================================================================================================================')

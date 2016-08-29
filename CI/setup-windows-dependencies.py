@@ -136,5 +136,5 @@ setBOOST = 'SET BOOST_HOME={0}'.format(os.path.join(downloadsDir, 'boost_1_59_0_
 setLIBXML2 = 'SET LIBXML2={0}'.format(os.path.join(downloadsDir, 'libxml2-2.7.8.win32'))
 setCODE_SYNTHESYS_XSD = 'SET CODE_SYNTHESYS_XSD={0}'.format(xsdInstallDir)
 setXERCES = 'SET XERCESC={0}'.format(os.path.join(downloadsDir, 'xerces-c-3.1.2', 'Build', 'Win64'))
-write_file('setLocalPath.bat', '{0}\n{1}\n{2}\n{3}'.format(setPATH, setBOOST, setLIBXML2, setCODE_SYNTHESYS_XSD, setXERCES))
+write_file('setLocalPath.bat', '{0}\n{1}\n{2}\n{3}\n{4}'.format(setPATH, setBOOST, setLIBXML2, setCODE_SYNTHESYS_XSD, setXERCES))
 print('===============================================================================================================================')

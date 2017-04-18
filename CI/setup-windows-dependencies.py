@@ -19,17 +19,17 @@ downloaded_files = {
 'PYSVN': os.path.join(downloadsDir, 'py27-pysvn-svn193-1.9.0-1849-Win32.exe'),
 'PYSVN_URL': 'https://cernbox.cern.ch/index.php/s/CFxkAy38E8C8ipA/download',
 'ASTYLE': os.path.join(downloadsDir, 'astyle.zip'),
-'ASTYLE_URL': 'https://cernbox.cern.ch/index.php/s/MwzEg2vSDNATgTI/download',
+'ASTYLE_URL': 'https://cernbox.cern.ch/index.php/s/ajLDK1WhB1fi5Io/download',
 'BOOST': os.path.join(downloadsDir, 'boost_1_59_0_VS2013.zip'),
 'BOOST_URL': 'https://cernbox.cern.ch/index.php/s/n6XWtzH8mwH2jhq/download',
 'LIBXML2': os.path.join(downloadsDir, 'libxml2-2.7.8.win32.zip'),
-'LIBXML2_URL': 'https://cernbox.cern.ch/index.php/s/0mHSe6TqM6OBBWA/download',
+'LIBXML2_URL': 'ftp://ftp.zlatkovic.com/libxml/libxml2-2.7.8.win32.zip',
 'XSD': os.path.join(downloadsDir,'xsd-3.3.msi'),
 'XSD_URL': 'http://www.codesynthesis.com/download/xsd/3.3/windows/i686/xsd-3.3.msi',
 'XERCES': os.path.join(downloadsDir, 'xerces-c-3.1.2.zip'),
-'XERCES_URL': 'https://cernbox.cern.ch/index.php/s/Lz1DAa61yJJzwPQ/download',
-'OPENSSL': os.path.join(downloadsDir, 'Win32OpenSSL-1_0_2h.exe'),
-'OPENSSL_URL': 'http://slproweb.com/download/Win32OpenSSL-1_0_2h.exe'
+'XERCES_URL': 'https://cernbox.cern.ch/index.php/s/OotvPYLOjt9KaR2/download',
+'OPENSSL': os.path.join(downloadsDir, 'Win64OpenSSL-1_1_0e.exe'),
+'OPENSSL_URL': 'https://slproweb.com/download/Win64OpenSSL-1_1_0e.exe'
 }
 
 windows_tools = {
@@ -64,6 +64,7 @@ def download_file(filenameOnDisk, remoteURL):
 	print 'downloading file [{0}] from [{1}]'.format(filenameOnDisk, remoteURL)
 	try:
 		urllib.urlretrieve (remoteURL, filenameOnDisk)
+		print "downloaded file [{0}] size [{1} bytes]".format(filenameOnDisk, os.path.getsize(filenameOnDisk))
 	except Exception as e:
 		sys.exit('unexpected downloading file [{0}] from [${1}], error msg: {2}'.format(filenameOnDisk, remoteURL, e.message))
 

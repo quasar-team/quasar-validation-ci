@@ -23,7 +23,7 @@ downloaded_files = {
 'BOOST': os.path.join(downloadsDir, 'boost_1_59_0_VS2013.zip'),
 'BOOST_URL': 'https://cernbox.cern.ch/index.php/s/n6XWtzH8mwH2jhq/download',
 'LIBXML2': os.path.join(downloadsDir, 'libxml2-2.7.8.win32.zip'),
-'LIBXML2_URL': 'ftp://ftp.zlatkovic.com/libxml/libxml2-2.7.8.win32.zip',
+'LIBXML2_URL': 'https://cernbox.cern.ch/index.php/s/lJgrBI6azmEjy8b/download',
 'XSD': os.path.join(downloadsDir,'xsd-3.3.msi'),
 'XSD_URL': 'http://www.codesynthesis.com/download/xsd/3.3/windows/i686/xsd-3.3.msi',
 'XERCES': os.path.join(downloadsDir, 'xerces-c-3.1.2.zip'),
@@ -130,11 +130,11 @@ run_command('install openssl', windows_tools['EXE_INSTALLER'].format(downloaded_
 print('===============================================================================================================================')
 print('==GREAT! all windows dependencies setup and installed on this machine. BUT! local PATH variable must be set to use dependencies')
 print('==Generating file \'setLocalPath.bat\' - run this in the local CMD window to set PATH accordingly)                             ')
-libxml2Bin=os.path.join(downloadsDir, 'libxml2-2.7.8.win32', 'bin')
+libxml2Bin=os.path.join(downloadsDir, downloadsDir, 'libxml2', 'v2.7.8_64BIT', 'win32', 'bin.msvc')
 astyleBin=os.path.join(downloadsDir, 'AStyle', 'bin')
 setPATH = 'SET PATH=%PATH%;{0};{1};{2}'.format(xsdInstallBinaryDir, libxml2Bin, astyleBin)
 setBOOST = 'SET BOOST_HOME={0}'.format(os.path.join(downloadsDir, 'boost_1_59_0_VS2013'))
-setLIBXML2 = 'SET LIBXML2={0}'.format(os.path.join(downloadsDir, 'libxml2-2.7.8.win32'))
+setLIBXML2 = 'SET LIBXML2={0}'.format(libxml2Bin)
 setCODE_SYNTHESYS_XSD = 'SET CODE_SYNTHESYS_XSD={0}'.format(xsdInstallDir)
 setXERCES = 'SET XERCESC={0}'.format(os.path.join(downloadsDir, 'xerces-c-3.1.2', 'Build', 'Win64'))
 write_file('setLocalPath.bat', '{0}\n{1}\n{2}\n{3}\n{4}'.format(setPATH, setBOOST, setLIBXML2, setCODE_SYNTHESYS_XSD, setXERCES))

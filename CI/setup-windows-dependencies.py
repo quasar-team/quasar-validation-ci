@@ -29,7 +29,7 @@ downloaded_files = {
 'XERCES': os.path.join(downloadsDir, 'xerces-c-3.1.2.zip'),
 'XERCES_URL': 'https://cernbox.cern.ch/index.php/s/OotvPYLOjt9KaR2/download',
 'OPENSSL': os.path.join(downloadsDir, 'Win64OpenSSL-1_1_0e.exe'),
-'OPENSSL_URL': 'https://slproweb.com/download/Win64OpenSSL-1_1_0e.exe'
+'OPENSSL_URL': 'https://slproweb.com/download/Win64OpenSSL-1_1_0f.exe'
 }
 
 windows_tools = {

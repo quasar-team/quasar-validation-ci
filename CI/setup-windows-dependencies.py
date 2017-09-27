@@ -21,7 +21,7 @@ downloaded_files = {
 'ASTYLE': os.path.join(downloadsDir, 'astyle.zip'),
 'ASTYLE_URL': 'https://cernbox.cern.ch/index.php/s/ajLDK1WhB1fi5Io/download',
 'BOOST': os.path.join(downloadsDir, 'boost_1_59_0_VS2013.zip'),
-'BOOST_URL': 'https://cernbox.cern.ch/index.php/s/n6XWtzH8mwH2jhq/download',
+'BOOST_URL': 'https://cernbox.cern.ch/index.php/s/Chw3WQxFByoWsIQ/download',
 'LIBXML2': os.path.join(downloadsDir, 'libxml2-2.7.8.win32.zip'),
 'LIBXML2_URL': 'https://cernbox.cern.ch/index.php/s/lJgrBI6azmEjy8b/download',
 'XSD': os.path.join(downloadsDir,'xsd-3.3.msi'),
